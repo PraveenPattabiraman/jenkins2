@@ -1,22 +1,16 @@
 pipeline {
-    agent { docker { image 'httpd:latest' }}
-
+    agent any
     stages {
-        stage('hello world') {
+        stage (' httpd install') {
+            agent {
+                docker {
+                    image 'httpd'
+                }
+            }
             steps {
-                echo 'Hello world'
+                sh 'docker run -itd --name httpdcontainer -p 9090:80 httpd'
             }
         }
-        stage('Test') {
-            steps {
-                echo 'Testing..'
-            }
-        }
-        stage('Deploy') {
-            steps {
-                echo 'Deploying....'
-            }
-        }
-        
+
     }
 }
