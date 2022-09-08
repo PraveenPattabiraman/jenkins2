@@ -1,5 +1,5 @@
 pipeline {
-    agent any
+    agent { docker { image 'httpd:latest' }}
 
     stages {
         stage('hello world') {
@@ -17,5 +17,6 @@ pipeline {
                 echo 'Deploying....'
             }
         }
+        stage()
     }
 }
