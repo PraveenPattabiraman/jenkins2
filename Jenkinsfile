@@ -17,6 +17,11 @@ pipeline {
                 sh "docker run -itd --name httpdcontainer -p '8090:80' httpd:v1"
             }
         }
+        stage ('removing the container') {
+            steps {
+                sh "docker rm -f $(docker ps -q) && docker rmi $(docker images) -f"
+            }
+        }
 
     }
 }
