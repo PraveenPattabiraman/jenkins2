@@ -1,13 +1,11 @@
 pipeline {
-    agent {
-        docker { image  'httpd' }
-    }
+    agent any
     stages {
-        stage ('build') {
-            steps {
-                sh 'docker run -itd --name httpdcontainer -p 8090:80 httpd'
-            }
+        stage ('build stage') {
+            sh 'docker build -t httpd:v1'
         }
-
+        stage {
+            sh 'docker run -itd --name httpdcontainer httpd:v1'
+        }
     }
 }
