@@ -19,7 +19,7 @@ pipeline {
         }
         stage ('removing the container') {
             steps {
-                sh "docker rm -f \$(docker ps -q) && docker rmi $(docker images -q)"
+                sh "docker rm -f \$(docker ps -q) && docker rmi \$(docker images -q)"
             }
         }
 
