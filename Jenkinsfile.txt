@@ -2,10 +2,10 @@ pipeline {
     agent any
     stages {
         stage ('build stage') {
-            sh 'docker build -t httpd:v1'
+            sh "docker build -t httpd:v1"
         }
         stage {
-            sh 'docker run -itd --name httpdcontainer httpd:v1'
+            sh "docker run -itd --name httpdcontainer httpd:v1"
         }
     }
 }
